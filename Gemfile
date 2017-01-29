@@ -15,15 +15,18 @@ gem 'execjs'
 gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 4.2.1'
 gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 gem 'elasticsearch-model', '~> 0.1.9'
 gem 'elasticsearch-rails', '~> 0.1.9'
+gem 'elasticsearch-persistence', '~> 0.1.9'
 gem 'sprockets-commoner', '~> 0.6.3'
+gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
+gem 'devise', '~> 4.2.0'
+gem 'mysql2', '~> 0.4.5'
 
 group :development, :test do
   gem 'byebug', platform: :mri

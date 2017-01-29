@@ -41,7 +41,9 @@ before "deploy:assets:precompile", "deploy:npm_install"
 namespace :deploy do
   desc "Run npm install"
   task :npm_install do
-    invoke_command "cd #{release_path} && npm install"
+    on roles(:app) do
+      execute "cd #{release_path} && npm install"
+    end
   end
 end
 
