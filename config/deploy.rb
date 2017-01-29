@@ -2,7 +2,7 @@
 lock "3.7.2"
 
 set :application, 'thermostat'
-set :repo_url, "git@example.com:me/my_repo.git"
+set :repo_url, "git@github.com:ankurp/thermostat.git"
 
 set :user,            'ubuntu'
 set :puma_threads,    [4, 16]
