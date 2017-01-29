@@ -16,11 +16,6 @@ class Reading < ApplicationRecord
     end
   end
 
-  # attribute :sensor_id, String, mapping: { analyzer: 'keyword' }
-  # attribute :room_name, String, mapping: { analyzer: 'keyword' }
-  # attribute :location_name, String, mapping: { analyzer: 'keyword' }
-  # attribute :organization_name, String, mapping: { analyzer: 'keyword' }
-
   def as_indexed_json(options={})
     room = sensor.room
     location = room.location
