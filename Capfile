@@ -8,6 +8,7 @@ require 'capistrano/rails'
 require 'capistrano/bundler'
 require 'capistrano/rvm'
 require 'capistrano/puma'
+require 'capistrano/secrets_yml'
 
 # Load the SCM plugin appropriate to your project:
 #
