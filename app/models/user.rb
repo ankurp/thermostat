@@ -16,9 +16,9 @@ class User < ApplicationRecord
       room_name = notification.sensor.room.name
       trigger = notification.notification_trigger
       sensor_type = trigger.sensor_type.name
-      reading = notification.reading.send(sensor_type)
+      reading = notification.reading.send(sensor_type).round(1)
       triggered_when = trigger.trigger_when.humanize.downcase
-      trigger_value = trigger.sensor_value
+      trigger_value = trigger.sensor_value.round(1)
 
       sms = client.messages.create(
         from: from_number,
