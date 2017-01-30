@@ -42,9 +42,9 @@ class Reading < ApplicationRecord
       reading_value = self.send(trigger.sensor_type.name)
 
       create_notification = if trigger.greater_than?
-        reading_value >= limit_value
+        reading_value > limit_value
       else
-        reading_value <= limit_value
+        reading_value < limit_value
       end
 
       if create_notification
