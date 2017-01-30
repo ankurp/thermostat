@@ -1,9 +1,9 @@
-ActiveAdmin.register User do
+ActiveAdmin.register SensorType do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :organization_id, :email, :name, :phone_number, :role
+permit_params :name
 #
 # or
 #

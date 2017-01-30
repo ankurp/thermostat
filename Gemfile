@@ -27,6 +27,7 @@ gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
 gem 'devise', '~> 4.2.0'
 gem 'mysql2', '~> 0.4.5'
+gem 'twilio-ruby', '~> 4.13.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri

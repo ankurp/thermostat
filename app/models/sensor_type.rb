@@ -1,0 +1,2 @@
+class SensorType < ApplicationRecord
+end

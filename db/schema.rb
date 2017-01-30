@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170129164529) do
+ActiveRecord::Schema.define(version: 20170130005413) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "namespace"
@@ -55,6 +55,28 @@ ActiveRecord::Schema.define(version: 20170129164529) do
     t.index ["organization_id"], name: "index_locations_on_organization_id", using: :btree
   end
 
+  create_table "notification_triggers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.float    "sensor_value",   limit: 24
+    t.integer  "sensor_type_id"
+    t.integer  "trigger_when",              default: 0
+    t.integer  "location_id"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.index ["location_id"], name: "index_notification_triggers_on_location_id", using: :btree
+    t.index ["sensor_type_id"], name: "index_notification_triggers_on_sensor_type_id", using: :btree
+  end
+
+  create_table "notifications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "sensor_id"
+    t.integer  "reading_id"
+    t.boolean  "is_acknowledged",         default: false
+    t.integer  "notification_trigger_id"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.index ["notification_trigger_id"], name: "index_notifications_on_notification_trigger_id", using: :btree
+    t.index ["reading_id"], name: "index_notifications_on_reading_id", using: :btree
+  end
+
   create_table "organizations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -83,6 +105,12 @@ ActiveRecord::Schema.define(version: 20170129164529) do
     t.datetime "updated_at",   null: false
     t.index ["location_id"], name: "index_rooms_on_location_id", using: :btree
     t.index ["room_type_id"], name: "index_rooms_on_room_type_id", using: :btree
+  end
+
+  create_table "sensor_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sensors", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -117,6 +145,10 @@ ActiveRecord::Schema.define(version: 20170129164529) do
   end
 
   add_foreign_key "locations", "organizations"
+  add_foreign_key "notification_triggers", "locations"
+  add_foreign_key "notification_triggers", "sensor_types"
+  add_foreign_key "notifications", "notification_triggers"
+  add_foreign_key "notifications", "readings"
   add_foreign_key "rooms", "locations"
   add_foreign_key "rooms", "room_types"
   add_foreign_key "sensors", "rooms"
