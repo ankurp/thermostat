@@ -5,6 +5,7 @@ class Reading < ApplicationRecord
   include Elasticsearch::Model::Callbacks
 
   delegate :location, to: :sensor
+  attr_accessor :force_alert
 
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
@@ -33,8 +34,13 @@ class Reading < ApplicationRecord
   end
 
   def should_create_notification?
+    debugger
     if Notification.where(sensor: self.sensor, is_acknowledged: false).exists?
       return
+    end
+
+    if self.force_alert.present?
+      return Notification.create(sensor: self.sensor, reading: self, notification_trigger: NotificationTrigger.where(location: self.location).first)
     end
 
     NotificationTrigger.where(location: self.location).each do |trigger|

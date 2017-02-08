@@ -13,7 +13,7 @@ class ReadingsController < ApplicationController
   private
 
   def reading_params
-    params.require(:reading).permit(:temperature, :humidity, :sensor_id)
+    params.require(:reading).permit(:temperature, :humidity, :sensor_id, :force_alert)
   end
 
   def verify_sensor
