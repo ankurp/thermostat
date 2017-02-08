@@ -34,7 +34,6 @@ class Reading < ApplicationRecord
   end
 
   def should_create_notification?
-    debugger
     if Notification.where(sensor: self.sensor, is_acknowledged: false).exists?
       return
     end
