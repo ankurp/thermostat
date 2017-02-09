@@ -17,13 +17,18 @@ class User < ApplicationRecord
       trigger = notification.notification_trigger
       sensor_type = trigger.sensor_type.name
       reading = notification.reading.send(sensor_type).round(1)
-      triggered_when = trigger.trigger_when.humanize.downcase
-      trigger_value = trigger.sensor_value.round(1)
+      if trigger.manually_reported?
+        msg = "Sensor #{sensor_name} in Room #{room_name} had a reading of #{reading} for #{sensor_type}. This was a manual trigger."
+      else
+        triggered_when = trigger.trigger_when.humanize.downcase
+        trigger_value = trigger.sensor_value.round(1)
+        msg = "Sensor #{sensor_name} in Room #{room_name} had a reading of #{reading} for #{sensor_type}. This was triggered because #{sensor_type} was #{triggered_when} #{trigger_value}."
+      end
 
       sms = client.messages.create(
         from: from_number,
         to: self.phone_number,
-        body: "Sensor #{sensor_name} in Room #{room_name} had a reading of #{reading} for #{sensor_type}. This was triggered because #{sensor_type} was #{triggered_when} #{trigger_value}."
+        body: msg
       )
     end
   end

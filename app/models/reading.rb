@@ -34,27 +34,28 @@ class Reading < ApplicationRecord
   end
 
   def should_create_notification?
-    if Notification.where(sensor: self.sensor, is_acknowledged: false).exists?
-      return
-    end
+    return if Notification.for_sensor(self.sensor).exists?
+    return Notification.create(
+      sensor: self.sensor,
+      reading: self,
+      notification_trigger: NotificationTrigger.manual_trigger_for_location(self.location)
+    ) if self.force_alert.present?
 
-    if self.force_alert.present?
-      return Notification.create(sensor: self.sensor, reading: self, notification_trigger: NotificationTrigger.where(location: self.location).first)
-    end
-
-    NotificationTrigger.where(location: self.location).each do |trigger|
+    NotificationTrigger.for_location(self.location).each do |trigger|
       limit_value = trigger.sensor_value
       reading_value = self.send(trigger.sensor_type.name)
 
       create_notification = if trigger.greater_than?
         reading_value > limit_value
-      else
+      elsif trigger.less_than?
         reading_value < limit_value
       end
-
-      if create_notification
-        Notification.create(sensor: self.sensor, reading: self, notification_trigger: trigger)
-      end
+      
+      Notification.create(
+        sensor: self.sensor,
+        reading: self,
+        notification_trigger: trigger
+      ) if create_notification
     end
   end
 end

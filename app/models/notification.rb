@@ -7,7 +7,10 @@ class Notification < ApplicationRecord
 
   delegate :responsible_user, to: :sensor
 
+  scope :for_sensor, -> (sensor) { where(sensor: sensor, is_acknowledged: false) }
+
   def notify_responsible_user
     responsible_user.notify(self)
   end
+
 end
