@@ -13,4 +13,8 @@ class Notification < ApplicationRecord
     responsible_user.notify(self)
   end
 
+  def acknowledge!
+    self.update_attribute(:is_acknowledged, true)
+  end
+
 end

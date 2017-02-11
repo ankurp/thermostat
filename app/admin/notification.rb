@@ -1,25 +1,30 @@
 ActiveAdmin.register Notification do
+  config.filters = false
 
-config.filters = false
+  permit_params :sensor_id, :reading_id, :is_acknowledged, :notification_trigger_id
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-permit_params :sensor_id, :reading_id, :is_acknowledged, :notification_trigger_id
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
-form do |f|
-  inputs 'Edit Notification' do
-    input :is_acknowledged, label: "Acknowleding will allow future notifications to be sent to you"
+  actions :all, except: [:edit]
+
+  controller do
+    def scoped_collection
+      super.includes :reading, :sensor, :notification_trigger
+    end
   end
-  para "Until you delete this notification or acknowledge it, you will never receive any other notification alerts being sent from this sensor."
-  actions
-end
 
+  index do
+    column :id
+    column :is_acknowledged
+    column :created_at
+    column :reading
+    column :sensor
+    column :notification_trigger
+    actions do |notification|
+      link_to 'Acknowledge', acknowledge_admin_notification_path(notification), method: :patch
+    end
+  end
+
+  member_action :acknowledge, method: :patch do
+    resource.acknowledge!
+    redirect_to resource_path, notice: "Notification Acknowledged!"
+  end
 end
