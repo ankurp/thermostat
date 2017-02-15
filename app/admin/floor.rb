@@ -1,9 +1,9 @@
-ActiveAdmin.register Room do
+ActiveAdmin.register Floor do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :location_id, :room_type_id, :name, :floor_id
+permit_params :name
 #
 # or
 #

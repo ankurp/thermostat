@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :organization
+  belongs_to :role
 
   def notify(notification)
     if self.phone_number.present?

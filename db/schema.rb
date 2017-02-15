@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130005413) do
+ActiveRecord::Schema.define(version: 20170215193413) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "namespace"
@@ -41,6 +41,12 @@ ActiveRecord::Schema.define(version: 20170130005413) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "floors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -91,6 +97,12 @@ ActiveRecord::Schema.define(version: 20170130005413) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "room_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -103,6 +115,8 @@ ActiveRecord::Schema.define(version: 20170130005413) do
     t.integer  "room_type_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "floor_id"
+    t.index ["floor_id"], name: "index_rooms_on_floor_id", using: :btree
     t.index ["location_id"], name: "index_rooms_on_location_id", using: :btree
     t.index ["room_type_id"], name: "index_rooms_on_room_type_id", using: :btree
   end
@@ -136,12 +150,13 @@ ActiveRecord::Schema.define(version: 20170130005413) do
     t.string   "name"
     t.string   "phone_number"
     t.integer  "organization_id"
-    t.string   "role"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["organization_id"], name: "index_users_on_organization_id", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["role_id"], name: "index_users_on_role_id", using: :btree
   end
 
   add_foreign_key "locations", "organizations"
@@ -149,8 +164,10 @@ ActiveRecord::Schema.define(version: 20170130005413) do
   add_foreign_key "notification_triggers", "sensor_types"
   add_foreign_key "notifications", "notification_triggers"
   add_foreign_key "notifications", "readings"
+  add_foreign_key "rooms", "floors"
   add_foreign_key "rooms", "locations"
   add_foreign_key "rooms", "room_types"
   add_foreign_key "sensors", "rooms"
   add_foreign_key "users", "organizations"
+  add_foreign_key "users", "roles"
 end
