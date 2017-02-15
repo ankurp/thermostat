@@ -1,29 +1,22 @@
 ActiveAdmin.register Sensor do
 
-config.filters = false
+  config.filters = false
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
+  controller do
+    def scoped_collection
+      super.includes room: { location: :organization }
+    end
+  end
 
   form do |f|
     inputs 'Details' do
-      input :uuid
+      input :uuid, label: "UUID (MAC Address)"
       input :name, label: "Name"
-      input :room, label: "Room"
+      input :room, label: "Room", member_label: :full_name
     end
     actions
   end
 
   permit_params :uuid, :room_id, :name
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
-
 
 end
