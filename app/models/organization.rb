@@ -2,7 +2,7 @@ class Organization < ApplicationRecord
   has_many :locations
   has_many :users
 
-  def responsible_user
-    self.users.first
+  def responsible_users
+    self.users.custodians
   end
 end

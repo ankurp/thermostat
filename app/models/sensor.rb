@@ -5,5 +5,5 @@ class Sensor < ApplicationRecord
   has_many :readings
 
   delegate :location, to: :room
-  delegate :responsible_user, to: :room
+  delegate :responsible_users, to: :room
 end
