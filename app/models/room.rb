@@ -2,6 +2,7 @@ class Room < ApplicationRecord
   belongs_to :location
   belongs_to :room_type
   belongs_to :floor
+  has_many :sensors, dependent: :destroy
 
   delegate :responsible_users, to: :location
 

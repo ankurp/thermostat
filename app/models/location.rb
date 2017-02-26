@@ -1,6 +1,6 @@
 class Location < ApplicationRecord
   belongs_to :organization
-  has_many :rooms
+  has_many :rooms, dependent: :destroy
 
   delegate :responsible_users, to: :organization
 

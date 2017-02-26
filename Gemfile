@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.0.1'
-gem 'sqlite3'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -26,7 +25,9 @@ gem 'sprockets-commoner', '~> 0.6.3'
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
 gem 'devise', '~> 4.2.0'
-gem 'mysql2', '~> 0.4.5'
+gem 'mysql2', '~> 0.4.5', platform: :ruby
+gem 'jdbc-mysql', platform: :jruby
+gem 'activerecord-jdbc-adapter', platform: :jruby
 gem 'twilio-ruby', '~> 4.13.0'
 
 group :development, :test do

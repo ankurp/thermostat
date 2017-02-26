@@ -1,5 +1,7 @@
 ActiveAdmin.register Room do
 
+  remove_filter :sensors
+
   permit_params :location_id, :room_type_id, :name, :floor_id
 
   controller do
