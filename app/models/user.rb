@@ -6,7 +6,7 @@ class User < ApplicationRecord
   belongs_to :organization
   belongs_to :role
 
-  scope :custodians, -> { joins(:role).where("roles.name = 'Custodian'") }
+  scope :receive_notification, -> { joins(:role).where("roles.receives_notification = ?", true) }
 
   def notify(notification)
     if self.phone_number.present?

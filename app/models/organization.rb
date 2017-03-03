@@ -3,6 +3,6 @@ class Organization < ApplicationRecord
   has_many :users, dependent: :destroy
 
   def responsible_users
-    self.users.custodians
+    self.users.receive_notification
   end
 end
