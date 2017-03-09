@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'sustainablejerseymailer@gmail.com'
+  default from: 'Temperature Alert Mailer <nirali@encoredevlabs.com>'
   layout 'mailer'
 end

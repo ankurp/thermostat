@@ -22,18 +22,33 @@ class Notification < ApplicationRecord
     room_name = self.sensor.room.name
     trigger = self.notification_trigger
     sensor_type = trigger.sensor_type.name
-    reading = case sensor_type
-      when 'temperature'
-        "#{self.reading.send(sensor_type).to_farenheit(round: 1)}° Farenheit"
-      else
-        self.reading.send(sensor_type).round(1)
-      end
+    case sensor_type
+    when 'temperature'
+      reading = "#{self.reading.send(sensor_type).to_farenheit(round: 1)}° Farenheit"
+      trigger_value = "#{trigger.sensor_value.to_farenheit(round: 1)}° Farenheit" unless trigger.manually_reported?
+    else
+      reading = self.reading.send(sensor_type).round(1)
+      trigger_value = trigger.sensor_value unless trigger.manually_reported?
+    end
+
     if trigger.manually_reported?
-      return "Sensor #{sensor_name} in #{room_name} had a reading of #{reading} for #{sensor_type}. This was a manual trigger."
+      [
+        "#{sensor_type.humanize} Alert Manually Triggered in #{room_name}",
+        [
+          "Sensor #{sensor_name} in #{room_name} had a #{sensor_type} reading of #{reading}.",
+          'This was a manual trigger.'
+        ].join(' ')
+      ]
     else
       triggered_when = trigger.trigger_when.humanize.downcase
-      trigger_value = trigger.sensor_value.to_farenheit(round: 1)
-      return "Sensor #{sensor_name} in #{room_name} had a reading of #{reading} for #{sensor_type}. This was triggered because #{sensor_type} was #{triggered_when} #{trigger_value}."
+
+      [
+        "#{sensor_type.humanize} Alert in #{room_name} - #{reading}",
+        [
+          "Sensor #{sensor_name} in #{room_name} had a #{sensor_type} reading of #{reading}.",
+          "This was triggered because #{sensor_type} was #{triggered_when} #{trigger_value}."
+        ].join(' ')
+      ]
     end
   end
 

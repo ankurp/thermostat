@@ -7,9 +7,9 @@ class UserMailer < ApplicationMailer
       else
         resources.map(&:email)
       end
-    @msg = notification.to_message
+    subject, @msg = notification.to_message
 
-    mail(to: emails, subject: "Alert")
+    mail(to: emails, subject: subject)
   end
 
 end
