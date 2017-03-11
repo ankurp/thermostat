@@ -7,7 +7,9 @@ class Reading < ApplicationRecord
   delegate :location, to: :sensor
   attr_accessor :force_alert
 
-  after_create :create_notification, unless: Proc.new { Notification.for_sensor(self.sensor).exists? }
+  after_create :create_notification, unless: Proc.new do
+    self.humidity > 100 || Notification.for_sensor(self.sensor).exists? # Check for excess humidity to ignore error readings
+  end
 
   def as_indexed_json(options={})
     room = sensor.room
