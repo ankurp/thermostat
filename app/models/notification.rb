@@ -3,6 +3,9 @@ class Notification < ApplicationRecord
   belongs_to :sensor
   belongs_to :notification_trigger
 
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   after_create :notify_responsible_users
 
   delegate :responsible_users, to: :sensor
@@ -11,6 +14,24 @@ class Notification < ApplicationRecord
 
   def notify_responsible_users
     UserMailer.sensor_alert(responsible_users, self).deliver_now
+  end
+
+  def as_indexed_json(options={})
+    room = sensor.room
+    location = room.location
+    floor = room.floor
+    organization = location.organization
+
+    {
+      sensor_name: sensor.name,
+      room_name: room.name,
+      location_name: location.name,
+      organization_name: organization.name,
+      notification_trigger: notification_trigger.trigger_when,
+      sensor_value: notification_trigger.sensor_value,
+      floor: floor.name,
+      created_at: created_at
+    }
   end
 
   def acknowledge!
