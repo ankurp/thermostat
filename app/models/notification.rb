@@ -12,6 +12,10 @@ class Notification < ApplicationRecord
 
   scope :for_sensor, -> (sensor) { where(sensor: sensor, is_acknowledged: false) }
 
+  def self.acknowledge_all!
+    where(is_acknowledged: false).update_all(is_acknowledged: true)
+  end
+
   def notify_responsible_users
     UserMailer.sensor_alert(responsible_users, self).deliver_now
   end
