@@ -1,5 +1,7 @@
 # thermostat
 
+![Metrics Dashboard](https://raw.githubusercontent.com/ankurp/thermostat/master/public/screenshot.png)
+
 This repository has server code, where Raspberry Pi units placed in the public schools report temperature data to. The site has an admin portal to configure
 
 * Users (ie. Ankur or other users who will receive alerts)
