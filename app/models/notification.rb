@@ -58,7 +58,7 @@ class Notification < ApplicationRecord
 
     if trigger.manually_reported?
       [
-        "#{sensor_type.humanize} Alert Manually Triggered in #{room_name}",
+        "#{room_name} Manually Triggered #{sensor_type.humanize} Alert",
         [
           "Sensor #{sensor_name} in #{room_name} had a #{sensor_type} reading of #{reading}.",
           'This was a manual trigger.'
@@ -68,7 +68,7 @@ class Notification < ApplicationRecord
       triggered_when = trigger.trigger_when.humanize.downcase
 
       [
-        "#{sensor_type.humanize} Alert in #{room_name} - #{reading}",
+        "#{room_name} #{sensor_type.humanize} Alert - #{reading}",
         [
           "Sensor #{sensor_name} in #{room_name} had a #{sensor_type} reading of #{reading}.",
           "This was triggered because #{sensor_type} was #{triggered_when} #{trigger_value}."
