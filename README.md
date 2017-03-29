@@ -33,8 +33,16 @@ The site has an admin portal to configure
 * Roles (ie. Custodian, Admin, etc. who have preference to receive alert for the location, school, they belong to)
 * Notification Trigger (ie. Trigger alert when temperature in this school goes above 85 degrees or trigger alert when temperature goes below a certain temperature)
 
+#### Website Overview Video
+
+[![Website Overview](http://img.youtube.com/vi/QLPMIrBIIm8/0.jpg)](http://www.youtube.com/watch?v=QLPMIrBIIm8)
+
 ## Metrics Dashboard
 
 To view metrics, Kibana is used where it plots the data collected can one can make different types of charts/graphs to be viewed. It also support Auto Refresh so the site can be run on a screen or Kiosk to view the temperature/humidity data as they come in from the rooms configured.
 
 ![Metrics Dashboard](https://raw.githubusercontent.com/ankurp/thermostat/master/public/screenshot.png)
+
+#### Metrics Dashboard Overview Video
+
+[![Metrics Dashboard Overview](http://img.youtube.com/vi/8Ajx1lG94jo/0.jpg)](http://www.youtube.com/watch?v=8Ajx1lG94jo)
