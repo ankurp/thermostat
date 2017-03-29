@@ -6,7 +6,8 @@ The devices that are sending the data are Raspberry Pi Units which are configure
 
 ## Requirements
 1. Any Linux based server, such as Debian or Ubuntu
-1. Ruby 2.4.0 and Rails version 5
+1. Ruby 2.4.0 and Rails version 5 and nodejs version 4 or higher
+1. mysql
 1. Elasticsearch and Kibana
 
 ## Getting Started Locally
