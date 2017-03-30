@@ -37,6 +37,12 @@ The site has an admin portal to configure
 
 [![Website Overview](http://img.youtube.com/vi/QLPMIrBIIm8/0.jpg)](http://www.youtube.com/watch?v=QLPMIrBIIm8)
 
+## Adding/Registering Device on the Website
+
+The server only accepts readings from devices which are registered. This is a security measure so no one can post bogus readings or corrupt the data.
+
+Device can be registered by going to `/admin/sensors/new` and by filling in the device's Wifi MAC address, along with a name/description to identity it and a Room it will be in. Once the device is added, the server will immediately start saving the readings from the device and you can view the data in the Metrics Dashboard and can set alert notification rules so you are notified when temperature reported goes above or below a certain limit.
+
 ## Metrics Dashboard
 
 To view metrics, Kibana is used where it plots the data collected can one can make different types of charts/graphs to be viewed. It also support Auto Refresh so the site can be run on a screen or Kiosk to view the temperature/humidity data as they come in from the rooms configured.
