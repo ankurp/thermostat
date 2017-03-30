@@ -43,6 +43,8 @@ The server only accepts readings from devices which are registered. This is a se
 
 Device can be registered by going to `/admin/sensors/new` and by filling in the device's Wifi MAC address, along with a name/description to identity it and a Room it will be in. Once the device is added, the server will immediately start saving the readings from the device and you can view the data in the Metrics Dashboard and can set alert notification rules so you are notified when temperature reported goes above or below a certain limit.
 
+![Register Device/Sensor](https://raw.githubusercontent.com/ankurp/thermostat/master/public/register-device.jpg)
+
 ## Metrics Dashboard
 
 To view metrics, Kibana is used where it plots the data collected can one can make different types of charts/graphs to be viewed. It also support Auto Refresh so the site can be run on a screen or Kiosk to view the temperature/humidity data as they come in from the rooms configured.
