@@ -1,6 +1,6 @@
 # thermostat
 
-This repository has server code to run the admin portal, collect and save the temperature data for plotting on graphs and to send out notifications based on certain business rules configured in the admin portal. 
+This repository has server code to run the admin portal, collect and save the temperature/humidity data to the database and search index for plotting on graphs and to send out notifications based on certain business rules configured in the admin portal.
 
 The devices that are sending the data are Raspberry Pi Units which are configured using instructions found in [this repository](https://github.com/ankurp/thermostat-sensor). Currently Raspberry Pis configured with those instructions have been placed in the public school of Maplewood and are reporting temperature data to to a website running this code.
 
