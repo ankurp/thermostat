@@ -142,6 +142,8 @@ GEM
     elasticsearch-transport (5.0.1)
       faraday
       multi_json
+    elasticsearch-xpack (5.0.0)
+      elasticsearch-api
     equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -323,6 +325,7 @@ DEPENDENCIES
   elasticsearch-model (~> 0.1.9)
   elasticsearch-persistence (~> 0.1.9)
   elasticsearch-rails (~> 0.1.9)
+  elasticsearch-xpack
   execjs
   inherited_resources!
   jbuilder (~> 2.5)
