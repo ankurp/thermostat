@@ -5,6 +5,12 @@ ActiveAdmin.register Organization do
 #
 # permit_params :list, :of, :attributes, :on, :model
 permit_params :name
+
+controller do
+  def new
+    @organization = Organization.new(name: "Sustainable Jersey")
+  end
+end
 #
 # or
 #

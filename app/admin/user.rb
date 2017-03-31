@@ -18,6 +18,10 @@ permit_params :organization_id, :email, :name, :phone_number, :role_id, :passwor
       super.includes :organization
       super.includes :role
     end
+
+    def new
+      @user = User.new(name: "Nirali", role_id: 1, email: "nirali+demo@encoredevlabs.com", phone_number: "+17324072459")
+    end
   end
 
   index do

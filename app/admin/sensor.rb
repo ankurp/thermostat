@@ -6,6 +6,10 @@ ActiveAdmin.register Sensor do
     def scoped_collection
       super.includes room: { location: :organization }
     end
+
+    def new
+      @sensor = Sensor.new(uuid: "b8:27:eb:54:a3:45", name: "Raspberry Pi Three")
+    end
   end
 
   form do |f|
