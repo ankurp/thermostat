@@ -1,2 +1,86 @@
-<h1>Welcome To Thermostat</h1>
-<p>Thermostat app</p>
+<div class="main">
+    <header>
+        <div class="wrap">
+          <div class="">
+            <div class="header-wrapper columns large-6">
+                <h1>Heat Map</h1>
+                <ul class="features">
+                    <li>Analyze temperature/humidity at your work space, home or public building and take action to reduce your energy consumption.</li>
+                    <li>Send alerts when temperature/humidity goes above or below a certain limit.</li>
+                    <li>Visualize data on top of a floor plan or graph it to detect trends to help save you energy.</li>
+                </ul>
+            </div>
+
+            <div class="columns large-6">
+              <div class="row column log-in-form">
+                <%= render template: 'active_admin/devise/sessions/new' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.wrap -->
+    </header>
+    <div class="spanning">
+        <div class="promo clearfix">
+            <div class="wrap">
+                <div class="promo-wrapper clearfix">
+                    <div class="promo-column">
+                        <%= image_tag "pin.png", height: "32", width: "24" %>
+                        <h5>Areas</h5>
+                        <p>Find areas that are too hot or cold by taking readings at regular interval throughout the day. The units placed can measure both temperature and humidity and can be placed anywhere where there is access to power outlet.</p>
+                    </div>
+                    <div class="promo-column">
+                        <%= image_tag "easy.png", height: "32", width: "34" %>
+                        <h5>Easy</h5>
+                        <p>Easy to visualize temperature and humidity data over time for the past day or month or year. Data can be rendered as line graphs or you can create a historgram of average temperature. You can also display the data on top of a floor plan.</p>
+                    </div>
+                    <div class="promo-column">
+                        <%= image_tag "settings.png", height: "32", width: "33" %>
+                        <h5>Configurable</h5>
+                        <p>Solution is configurable to every client to send alerts based on certain rules. Configuration to send readings every minute to whom to send alerts to can be done via the Admin Portal.</p>
+                    </div>
+                    <div class="promo-column">
+                        <%= image_tag "saturn.png", height: "32", width: "32" %>
+                        <h5>Setup</h5>
+                        <p>Units placed can be setup in a Mesh network with one unit having access to the internet which it shares with all other units or all units connect to a Wifi access point to send data directly over the internet. This system is always on and always healing itself.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- /.wrap -->
+        </div>
+        <!-- /.promo clearfix -->
+        <div class="discover clearfix">
+            <div class="wrap">
+                <div class="discover-content clearfix">
+                    <h2>Discover</h2>
+                    <p>Your neighborhood and help out the environment by doing outdoor maintenance jobs in your community while getting paid.</p>
+                </div>
+                <div class="discover-img">
+                    <div class="discover-img-inside">
+                      <%= image_tag "metrics.jpg" %>
+                    </div>
+                </div>
+            </div>
+            <!-- /.wrap -->
+        </div>
+        <!-- /.discover clearfix -->
+        <div class="video clearfix">
+            <div class="wrap">
+                <div class="video-title">Explore. Discover &amp; Save Energy</div>
+                <div class="video-subtitle"><a href="mailto:ankur@encoredevlabs.com">Contact Us for Demo</a></div>
+                <div class="center">
+                  <%= image_tag "floorplan.png" %>
+                </div>
+            </div>
+            <!-- /.wrap -->
+        </div>
+    </div>
+    <!-- /.spanning-columns -->
+</div>
+<!-- /.main -->
+<footer>
+    <div class="wrap">
+        <p>&copy; 2017 <strong>Encore Dev Labs LLC</strong>, All Rights Reserved</p>
+    </div>
+    <!-- /.wrap -->
+</footer>
