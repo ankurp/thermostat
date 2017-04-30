@@ -331,6 +331,7 @@ header .buttons-wrapper {
 /* header --------------------------  */
 
 header {
+    min-height: 100vh;
     padding: 20px 0;
     background: asset-url('header.jpg') no-repeat 50% 50%;
     color: white;
@@ -389,6 +390,14 @@ header .buttons-wrapper .button-stripe {
 .header-wrapper {
     padding-top: 20px;
     max-width: 655px;
+    h1 {
+      font-weight: 300;
+      img {
+        height: 63px;
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
     & .features {
       margin-left: 1.25rem;
       list-style-type: disc;
@@ -400,11 +409,11 @@ header .buttons-wrapper .button-stripe {
 /* footer --------------------------  */
 
 footer {
-    background: $background-blue;
+    background: $primary-color;
     color: white;
     font-size: 16px;
     line-height: 28px;
-    padding: 90px 0;
+    padding: 50px 0;
     text-align: center;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -462,11 +471,13 @@ footer {
 }
 
 .promo {
-    padding: 114px 0 54px
+    padding: 114px 0 54px;
+    background: $background-blue;
+    color: white;
 }
 
 .promo-wrapper {
-    margin: 0 -15px
+    margin: 0 -15px;
 }
 
 .promo-column {
@@ -648,7 +659,10 @@ footer {
 }
 
 .video {
-    padding: 108px 0 0;
+    padding: 20px 0;
+    h2 {
+      text-align: center;
+    }
     .center img {
         margin: 0 auto;
         display: block
@@ -698,13 +712,14 @@ footer {
 
 .discover {
     padding: 31px 0 25px;
-    background: #fafafa;
+    background: $secondary-color;
+    color: white;
 }
 
 .discover-content {
     float: right;
     width: 50%;
-    padding: 77px 97px 50px 15px;
+    padding: 0 97px 50px 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -969,5 +984,12 @@ footer {
     color: #0a0a0a;
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+#session_new {
+  & ~ a,
+  ~ br {
+    display: none;
   }
 }
