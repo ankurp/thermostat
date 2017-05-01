@@ -352,10 +352,6 @@ header h1 {
     margin-bottom: 38px;
 }
 
-header h1 span {
-    font-weight: 200
-}
-
 header .autor {
     padding: 12px 0 0;
     font-size: 14px;
@@ -392,7 +388,6 @@ header .buttons-wrapper .button-stripe {
     padding-top: 20px;
     max-width: 655px;
     h1 {
-      font-weight: 300;
       img {
         height: 63px;
         display: inline-block;
@@ -762,7 +757,10 @@ footer {
     box-sizing: border-box;
 }
 
-.discover-content h2 {
+.discover-content h2,
+.awards h2,
+.promo h2,
+.video h2 {
     font-size: 72px;
     line-height: 72px;
     font-weight: bold;
@@ -887,6 +885,7 @@ footer {
       margin-right: auto;
       float: none;
       text-align: center;
+      padding: 0 15px 50px;
   }
 
   .promo-column img {
@@ -958,9 +957,13 @@ footer {
       text-align: center;
   }
 
-  .discover-content h2 {
-      font-size: 60px;
-      line-height: 60px;
+  .discover-content h2,
+  .awards h2,
+  .promo h2,
+  .video h2 {
+    text-align: center;
+    font-size: 60px;
+    line-height: 60px;
   }
 
   .discover-img {
