@@ -1049,3 +1049,24 @@ footer {
 .header-section {
   margin-bottom: 20px;
 }
+
+.color-bar {
+  width: 100%;
+  overflow: hidden;
+  > div {
+    height: 10px;
+    width: 33.333%;
+    margin: 0;
+    padding: 0;
+    float: left;
+    &:nth-child(1) {
+      background: $background-blue;
+    }
+    &:nth-child(2) {
+      background: $primary-color;
+    }
+    &:nth-child(3) {
+      background: $secondary-color;
+    }
+  }
+}
