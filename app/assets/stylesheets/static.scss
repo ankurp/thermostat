@@ -1046,26 +1046,6 @@ footer {
   }
 }
 
-.orbit {
-  @include orbit-wrapper;
-}
-
-.orbit-container {
-  @include orbit-container;
-}
-
-.orbit-slide {
-  @include orbit-slide;
-}
-
-.orbit-next, .orbit-previous {
-  @include orbit-control;
-}
-
-.orbit-next {
-  @include orbit-next;
-}
-
-.orbit-previous {
-  @include orbit-previous;
+.header-section {
+  margin-bottom: 20px;
 }
