@@ -1049,7 +1049,7 @@ footer {
   overflow: hidden;
   > div {
     height: 10px;
-    width: 33.333%;
+    width: 25%;
     margin: 0;
     padding: 0;
     float: left;
@@ -1057,9 +1057,12 @@ footer {
       background: $background-blue;
     }
     &:nth-child(2) {
-      background: $primary-color;
+      background: lighten($primary-color, 10%);
     }
     &:nth-child(3) {
+      background: $primary-color;
+    }
+    &:nth-child(4) {
       background: $secondary-color;
     }
   }
