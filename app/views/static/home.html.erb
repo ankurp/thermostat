@@ -5,8 +5,8 @@
             <div class="header-wrapper columns large-6">
                 <h1><%= image_tag 'logo.svg' %>Heat Map</h1>
                 <ul class="features">
-                    <li>Analyze temperature/humidity at your work space, home or public building and take action to reduce your energy consumption.</li>
-                    <li>Send alerts when temperature/humidity goes above or below a certain limit.</li>
+                    <li>Analyze temperature at your work space, home or public building and take action to reduce your energy consumption.</li>
+                    <li>Send alerts when temperature goes above or below a certain limit.</li>
                     <li>Visualize data on top of a floor plan or graph it to detect trends to help save you energy.</li>
                 </ul>
             </div>
@@ -66,11 +66,30 @@
         <!-- /.discover clearfix -->
         <div class="video clearfix">
             <div class="wrap center">
-                <h2>Discover, Save Energy &amp; Be Sustainable</h2>
+                <h2>Visualize Data</h2>
+                <p>View data as a graph or overlay on top of your custom floor plan to help discover hot and cold areas in your space.</p>
                 <%= image_tag "floorplan.png" %>
-                <div class="video-subtitle"><a href="mailto:ankur@encoredevlabs.com">Contact Us for Demo</a></div>
+                <div class="video-subtitle"><a class="button" href="mailto:ankur@encoredevlabs.com">Contact Us for Demo</a></div>
             </div>
             <!-- /.wrap -->
+        </div>
+        <!-- /.discover clearfix -->
+        <div class="awards clearfix">
+            <div class="wrap">
+                <h2>In News</h2>
+                <div class="awards-wrapper clearfix">
+                    <div class="awards-column">
+                        <a href="http://www.sustainablejersey.com/media-communications/news-single-view/?tx_news_pi1%5Bnews%5D=366&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Baction%5D=detail&cHash=7f9301f2ebef526358dd1922ba790867" target="_blank"><%= image_tag "sustainable-jersey.png" %></a>
+                        <h5><a href="http://www.sustainablejersey.com/media-communications/news-single-view/?tx_news_pi1%5Bnews%5D=366&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Baction%5D=detail&cHash=7f9301f2ebef526358dd1922ba790867" target="_blank">Sustainable Jersey Winner</a></h5>
+                        <p>Encore Dev Labs won first place in the 2017 Sustainable Jersey's Coding for Community Competition. The competition involved several townships in NJ and several civic hackers consisting of entrpreneurs, engineers, municipal representatives and many more.</p>
+                    </div>
+                    <div class="awards-column">
+                        <a href="http://essexnewsdaily.com/headlne-news/33829" target="_blank"><%= image_tag "maplewood.png" %></a>
+                        <h5><a href="http://essexnewsdaily.com/headlne-news/33829" target="_blank">Maplewood Township</a></h5>
+                        <p>Implemented pilot in Maplewood's Tuscan Elementary School and plan on implementing in rest of the public schools in Maplewood and South Orange School District.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- /.spanning-columns -->
@@ -82,3 +101,27 @@
     </div>
     <!-- /.wrap -->
 </footer>
+<!-- Start of Async Drift Code -->
+<script>
+!function() {
+  var t;
+  if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0, 
+  t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
+  t.factory = function(e) {
+    return function() {
+      var n;
+      return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
+    };
+  }, t.methods.forEach(function(e) {
+    t[e] = t.factory(e);
+  }), t.load = function(t) {
+    var e, n, o, i;
+    e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"), 
+    o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js", 
+    n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
+  });
+}();
+drift.SNIPPET_VERSION = '0.3.1';
+drift.load('hf4pisuu8dwb');
+</script>
+<!-- End of Async Drift Code -->
