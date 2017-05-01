@@ -429,10 +429,6 @@ footer {
     clear: both
 }
 
-.spanning > div:not(.awards) {
-  min-height: 100vh;
-}
-
 .newsletter {
     background: #fafafa;
     padding: 103px 0 109px;
@@ -476,7 +472,7 @@ footer {
 }
 
 .promo {
-    padding: 114px 0 54px;
+    padding: 54px 0;
     background: $background-blue;
     color: white;
 }
@@ -489,12 +485,10 @@ footer {
   background: $primary-color;
   color: white;
   text-align: center;
+  padding: 54px 0;
   a {
     color: white;
     text-decoration: underline;
-  }
-  h2 {
-    margin-top: 20px;
   }
 }
 
@@ -503,7 +497,7 @@ footer {
 }
 
 .awards-column {
-    padding: 0 15px 60px;
+    padding: 0 15px 0;
     float: left;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -517,7 +511,7 @@ footer {
 }
 
 .promo-column {
-    padding: 0 15px 60px;
+    padding: 0 15px;
     float: left;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -702,7 +696,7 @@ footer {
 }
 
 .video {
-    padding: 20px 0;
+    padding: 54px 0;
     h2 {
       text-align: center;
     }
@@ -754,7 +748,7 @@ footer {
 }
 
 .discover {
-    padding: 31px 0 25px;
+    padding: 54px 0;
     background: $secondary-color;
     color: white;
 }
