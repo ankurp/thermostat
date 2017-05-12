@@ -9,9 +9,9 @@ ActiveAdmin.register Room do
       super.includes location: :organization
     end
 
-    def new
-      @room = Room.new(name: "Library Auditorium")
-    end
+    # def new
+    #   @room = Room.new(name: "Library Auditorium")
+    # end
   end
 
   form do |f|

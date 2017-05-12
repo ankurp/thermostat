@@ -7,9 +7,9 @@ ActiveAdmin.register Sensor do
       super.includes room: { location: :organization }
     end
 
-    def new
-      @sensor = Sensor.new(uuid: "b8:27:eb:54:a3:45", name: "Raspberry Pi Three")
-    end
+    # def new
+    #   @sensor = Sensor.new(uuid: "b8:27:eb:54:a3:45", name: "Raspberry Pi Three")
+    # end
   end
 
   form do |f|
@@ -17,10 +17,12 @@ ActiveAdmin.register Sensor do
       input :uuid, label: "UUID (MAC Address)"
       input :name, label: "Name"
       input :room, label: "Room", member_label: :full_name
+      input :lat, label: "Latitude of Sensor"
+      input :lon, label: "Longitude of Sensor"
     end
     actions
   end
 
-  permit_params :uuid, :room_id, :name
+  permit_params :uuid, :room_id, :name, :lat, :lon
 
 end

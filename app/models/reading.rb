@@ -11,6 +11,10 @@ class Reading < ApplicationRecord
 
   validates :humidity, numericality: { :less_than_or_equal_to => 100 }
 
+  mapping do
+    indexes :sensor_location, type: 'geo_point'
+  end
+
   def as_indexed_json(options={})
     room = sensor.room
     location = room.location
@@ -22,6 +26,7 @@ class Reading < ApplicationRecord
       room_name: room.name,
       location_name: location.name,
       organization_name: organization.name,
+      sensor_location: { lat: sensor.lat, lon: sensor.lon },
       floor: floor.name)
   end
 

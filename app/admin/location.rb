@@ -6,9 +6,9 @@ ActiveAdmin.register Location do
 permit_params :street, :city, :state, :zip_code, :name, :organization_id
 
 controller do
-  def new
-    @location = Location.new(name: "TCNJ", street: "2000 Pennington Road", city: "Ewing", state: "NJ", zip_code: "08628")
-  end
+  # def new
+  #   @location = Location.new(name: "TCNJ", street: "2000 Pennington Road", city: "Ewing", state: "NJ", zip_code: "08628")
+  # end
 end
 #
 # or

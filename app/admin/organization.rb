@@ -7,9 +7,9 @@ ActiveAdmin.register Organization do
 permit_params :name
 
 controller do
-  def new
-    @organization = Organization.new(name: "Sustainable Jersey")
-  end
+  # def new
+  #   @organization = Organization.new(name: "Sustainable Jersey")
+  # end
 end
 #
 # or
