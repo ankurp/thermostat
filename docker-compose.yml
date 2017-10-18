@@ -1,0 +1,71 @@
+version: '2'
+
+volumes:
+  esdata:
+  mysqldata:
+  geodata:
+
+services:
+  web:
+    volumes_from:
+      - app
+    depends_on:
+      - app
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    links:
+      - app
+    ports:
+      - '80:80'
+
+  app:
+    build: .
+    links:
+      - mysql:mysql
+      - elasticsearch:elasticsearch
+    volumes:
+      - /thermostat
+    depends_on:
+      - mysql
+      - elasticsearch
+
+  mysql:
+    image: mysql:5.7.20
+    volumes:
+      - mysqldata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
+    container_name: elasticsearch
+    environment:
+      - cluster.name=thermostat-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 1g
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:5.6.3
+    environment:
+      SERVER_NAME: localhost
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch:elasticsearch
+    ports:
+      - 5601:5601
+
+  geoserver:
+    image: kartoza/geoserver
+    ports:
+      - '8080:8080'
+    volumes:
+      - geodata:/opt/geoserver/data_dir

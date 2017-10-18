@@ -1,0 +1,6 @@
+.git
+.dockerignore
+Gemfile.lock
+Dockerfile
+Dockerfile-nginx
+docker-compose.yml
