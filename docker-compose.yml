@@ -1,14 +1,16 @@
-version: '2'
+version: '3'
 
 volumes:
   esdata:
   mysqldata:
   geodata:
+  app:
 
 services:
   web:
-    volumes_from:
-      - app
+    image: encoreptl/thermostat-web
+    volumes:
+      - app:/thermostat
     depends_on:
       - app
     build:
@@ -20,12 +22,14 @@ services:
       - '80:80'
 
   app:
+    image: encoreptl/thermostat-app
     build: .
+    restart: unless-stopped
     links:
       - mysql:mysql
       - elasticsearch:elasticsearch
     volumes:
-      - /thermostat
+      - app:/thermostat
     depends_on:
       - mysql
       - elasticsearch
@@ -43,12 +47,6 @@ services:
     environment:
       - cluster.name=thermostat-cluster
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    mem_limit: 1g
     volumes:
       - esdata:/usr/share/elasticsearch/data
 
