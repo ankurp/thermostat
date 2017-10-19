@@ -9,6 +9,7 @@ volumes:
 services:
   web:
     image: encoreptl/thermostat-web
+    restart: unless-stopped
     volumes:
       - app:/thermostat
     depends_on:
@@ -36,6 +37,7 @@ services:
 
   mysql:
     image: mysql:5.7.20
+    restart: unless-stopped
     volumes:
       - mysqldata:/var/lib/mysql
     environment:
@@ -44,6 +46,7 @@ services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
     container_name: elasticsearch
+    restart: unless-stopped
     environment:
       - cluster.name=thermostat-cluster
       - bootstrap.memory_lock=true
@@ -58,6 +61,7 @@ services:
 
   kibana:
     image: docker.elastic.co/kibana/kibana:5.6.3
+    restart: unless-stopped
     environment:
       SERVER_NAME: localhost
     depends_on:
@@ -69,6 +73,7 @@ services:
 
   geoserver:
     image: kartoza/geoserver
+    restart: unless-stopped
     ports:
       - '8080:8080'
     volumes:
