@@ -36,8 +36,6 @@ namespace :puma do
   before :start, :make_dirs
 end
 
-before "deploy:assets:precompile"
-
 namespace :deploy do
   desc "Make sure local git is in sync with remote."
   task :check_revision do

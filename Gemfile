@@ -11,7 +11,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'execjs'
 gem 'therubyracer', platforms: :ruby
-gem 'foundation-rails', '~> 6.3.0.0'
 gem 'sassc-rails', '~> 1.3.0'
 
 gem 'jquery-rails'
