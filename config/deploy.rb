@@ -36,16 +36,7 @@ namespace :puma do
   before :start, :make_dirs
 end
 
-before "deploy:assets:precompile", "deploy:npm_install"
-
-namespace :deploy do
-  desc "Run npm install"
-  task :npm_install do
-    on roles(:app) do
-      execute "cd #{release_path} && npm install"
-    end
-  end
-end
+before "deploy:assets:precompile"
 
 namespace :deploy do
   desc "Make sure local git is in sync with remote."
