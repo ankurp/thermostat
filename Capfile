@@ -9,6 +9,7 @@ require 'capistrano/bundler'
 require 'capistrano/rvm'
 require 'capistrano/puma'
 require 'capistrano/secrets_yml'
+require 'whenever/capistrano'
 
 # Load the SCM plugin appropriate to your project:
 #
